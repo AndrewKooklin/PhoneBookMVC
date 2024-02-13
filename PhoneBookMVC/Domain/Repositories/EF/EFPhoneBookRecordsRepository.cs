@@ -20,6 +20,7 @@ namespace PhoneBookMVC.Domain.Repositories.EF
         {
             return _context.PhoneBookRecords;
         }
+
         public PhoneBookRecord GetPhoneBookRecordById(int id)
         {
             return _context.PhoneBookRecords.FirstOrDefault(r => r.Id == id);

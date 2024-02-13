@@ -34,11 +34,11 @@ namespace PhoneBookMVC.Domain.Entities
         {
             get 
             { 
-                return description;
+                return description = $"{Id} {LastName} {FirstName} {FathersName}";
             }
             set
             {
-                description = $"{Id} {LastName} {FirstName} {FathersName}";
+                description = value;
             }
         } 
     }

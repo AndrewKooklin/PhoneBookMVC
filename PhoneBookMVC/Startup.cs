@@ -27,10 +27,10 @@ namespace PhoneBookMVC
 
         public void ConfigureServices(IServiceCollection services)
         {
-            //подключаем конфиг из appsettings.json
+            //подключаем Config из appsettings.json для получения connectionString
             Configuration.Bind("PhoneBook", new Config());
 
-            //подключаем сервис
+            //подключаем сервисы
             services.AddTransient<IPhoneBookRecordsRepository, EFPhoneBookRecordsRepository>();
             services.AddTransient<DataManager>();
 
@@ -39,7 +39,6 @@ namespace PhoneBookMVC
 
             //поддержка контроллеров и представлений
             services.AddControllersWithViews();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,7 +54,7 @@ namespace PhoneBookMVC
             //подключаем поддержку статичных файлов
             app.UseStaticFiles();
 
-            //регистрируем наши маршруты(endpoints)
+            //регистрируем маршруты(endpoints)
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(name: "default", "{controller=Home}/{action=Index}/{id?}");
